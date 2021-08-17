@@ -10,8 +10,7 @@ def index(request):
         # source contain JSON data from API
 
         try:
-            source = urllib.request.urlopen(f"http://api.openweathermap.org/data/2.5/weather?"
-                                        f"q={city}&appid={os.environ['WEATHER_API']}").read()
+            source = urllib.request.urlopen(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={os.environ['WEATHER_API']}").read()
 
             # converting JSON data to a dictionary
             list_of_data = json.loads(source)
@@ -31,7 +30,8 @@ def index(request):
                 "weather_condition_des": list_of_data['weather'][0]['description']
             }
             print(data)
-        except:
+        except Exception as e:
+            print(e)
             data = {"data_status": "not_found"}
     else:
         data = {}
