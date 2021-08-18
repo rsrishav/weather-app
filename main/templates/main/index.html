@@ -5,13 +5,17 @@
     <meta charset="utf-8">
     <title>Weather Django App</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+            integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+
     <style>
     .autocomplete {
   position: relative;
@@ -78,32 +82,86 @@ input[type=submit] {
 
 
 
+
+
+
+
     </style>
 </head>
 
 <body>
-<nav class="row" style="background: #1a3d56; color: white;">
-    <h1 class="col-md-12 text-center">Weather Data</h1>
-</nav>
-<br/>
-<br/>
-<center class="row">
-    <form method="post" class="col-md-4 col-md-offset-4">
-        {% csrf_token %}
-        <div class="input-group">
-            <input id="myInput" type="text" class="form-control" name="city" placeholder="City name" required>
-            <!--            <button type="submit"><i class="fa fa-search"></i></button>-->
-            <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Link</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
+<!--                           data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                            Dropdown-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                            <li>-->
+<!--                                <hr class="dropdown-divider">-->
+<!--                            </li>-->
+<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+<!--                    </li>-->
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" aria-label="Search" id="myInput" name="city" placeholder="City name" required>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
-    </form>
-</center>
-<div class="row">
-    {% if country_code and coordinate and temp and pressure and humidity %}
-    <div class="col-md-4 col-md-offset-4">
+    </nav>
+    <!--    <nav class="navbar navbar-dark bg-primary">-->
+    <!--        <div class="container-fluid">-->
+    <!--            <span class="navbar-brand mb-0 h1">Weather Data</span>-->
+    <!--            <form class="d-flex">-->
+    <!--                <input class="form-control me-2" type="search" aria-label="Search" id="myInput" name="city" placeholder="City name" required>-->
+    <!--                <button class="btn btn-outline-light" type="submit">Search</button>-->
+    <!--            </form>-->
+
+    <!--        </div>-->
+    <!--    </nav>-->
+    <!--            <nav class="row" style="background: #1a3d56; color: white;">-->
+
+    <br/>
+    <br/>
+    <center class="row">
+        <form method="post" class="col-xs-12 col-md-4 col-md-offset-4">
+            {% csrf_token %}
+            <div class="input-group">
+                <!--                <input id="myInput" type="text" class="form-control" name="city" placeholder="City name" required>-->
+                <!--            <button type="submit"><i class="fa fa-search"></i></button>-->
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </center>
+    <div id="data" class="row">
+        {% if country_code and coordinate and temp and pressure and humidity %}
+        <!--        <div class="col-md-4 col-md-offset-4">-->
         <h3>City : {{city_name}}<span>({{country_code}})</span></h3>
         <h5>Temperature : {{temp}}</h5>
         <h5>Feels like : {{feels_like}}</h5>
@@ -111,15 +169,15 @@ input[type=submit] {
         <h5>Max Temperature : {{temp_max}}</h5>
         <h5>Humidity : {{humidity}}</h5>
         <h5>Weather : {{weather_condition}}</h5>
+        <!--        </div>-->
+        {% elif data_status == "not_found" %}
+        <div class="col-md-4 col-md-offset-4">
+            No data found !!!
+        </div>
+        {% endif %}
     </div>
-    {% elif data_status == "not_found" %}
-    <div class="col-md-4 col-md-offset-4">
-        No data found !!!
-    </div>
-    {% endif %}
-</div>
 
-<script>
+    <script>
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -237,7 +295,11 @@ autocomplete(document.getElementById("myInput"), cities);
 
 
 
-</script>
+
+
+
+
+    </script>
 
 </body>
 
