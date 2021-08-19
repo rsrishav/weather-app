@@ -7,7 +7,9 @@ from django.shortcuts import render
 def weather_icons(weather):
     selector = {
         "haze": "fas fa-smog",
-        "clouds": "fas fa-cloud-sun"
+        "clouds": "fas fa-cloud-sun",
+        "rain": "fas fa-cloud-rain",
+        "sun": "fas fa-sun"
     }
     return selector.get(weather.lower(), "fas fa-sun")
 
