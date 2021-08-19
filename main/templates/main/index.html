@@ -12,10 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
             integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
             crossorigin="anonymous"></script>
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <!-- Latest compiled JavaScript -->
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 
     <style>
     .autocomplete {
@@ -108,6 +108,7 @@ input[type=submit] {
 
 
 
+
     </style>
 </head>
 
@@ -135,10 +136,11 @@ input[type=submit] {
 </header>
 {% if country_code and coordinate and temp and pressure and humidity %}
 <div class="card" style="width: 18rem; margin: 2%;">
-<!--    <img src="..." class="" alt="...">-->
+    <!--    <img src="..." class="" alt="...">-->
     <div class="card-body">
 
-        <h4 class="card-title">{{city_name}}<span>({{country_code}})</span> <i class="{{weather_icon}}" style="font-size: xx-large;"></i></h4>
+        <h4 class="card-title">{{city_name}}<span>({{country_code}})</span> <i class="{{weather_icon}}"
+                                                                               style="font-size: xx-large;"></i></h4>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Temperature : <strong>{{temp}}</strong></li>
             <li class="list-group-item">Feels like : <strong>{{feels_like}}</strong></li>
@@ -154,21 +156,6 @@ input[type=submit] {
     No data found !!!
 </div>
 {% endif %}
-<!--<div class="row">-->
-<!--    {% if country_code and coordinate and temp and pressure and humidity %}-->
-<!--    <div class="col-md-4 col-md-offset-4">-->
-<!--        <h3>City : {{city_name}}<span>({{country_code}})</span></h3>-->
-<!--        <h5>Temperature : {{temp}}</h5>-->
-<!--        <h5>Feels like : {{feels_like}}</h5>-->
-<!--        <h5>Humidity : {{humidity}}</h5>-->
-<!--        <h5>Weather : {{weather_condition}}</h5>-->
-<!--    </div>-->
-<!--    {% elif data_status == "not_found" %}-->
-<!--    <div class="col-md-4 col-md-offset-4">-->
-<!--        No data found !!!-->
-<!--    </div>-->
-<!--    {% endif %}-->
-<!--</div>-->
 
 <script>
 function create_options(arr) {
@@ -181,10 +168,6 @@ function create_options(arr) {
 }
 var cities = ['Adilabad', 'Agra', 'Ahmedabad', 'Ahmednagar', 'Aizawl', 'Ajitgarh', 'Ajmer', 'Akola', 'Alappuzha', 'Aligarh', 'Alirajpur', 'Allahabad', 'Almora', 'Alwar', 'Ambala', 'Ambedkar', 'Nagar', 'Amravati', 'Amreli district', 'Amritsar', 'Anand', 'Anantapur', 'Anantnag', 'Angul', 'Anjaw', 'Anuppur', 'Araria', 'Ariyalur', 'Arwal', 'Ashok', 'Nagar', 'Auraiya', 'Aurangabad', 'Aurangabad', 'Azamgarh', 'Badgam', 'Bagalkot', 'Bageshwar', 'Bagpat', 'Bahraich', 'Baksa', 'Balaghat', 'Balangir', 'Balasore', 'Ballia', 'Balrampur', 'Banaskantha', 'Banda', 'Bandipora', 'Bangalore', 'Rural', 'Bangalore', 'Urban', 'Banka', 'Bankura', 'Banswara', 'Barabanki', 'Baramulla', 'Baran', 'Bardhaman', 'Bareilly', 'Bargarh', '(Baragarh)', 'Barmer', 'Barnala', 'Barpeta', 'Barwani', 'Bastar', 'Basti', 'Bathinda', 'Beed', 'Begusarai', 'Belgaum', 'Bellary', 'Betul', 'Bhadrak', 'Bhagalpur', 'Bhandara', 'Bharatpur', 'Bharuch', 'Bhavnagar', 'Bhilwara', 'Bhind', 'Bhiwani', 'Bhojpur', 'Bhopal', 'Bidar', 'Bijapur', 'Bijapur', 'Bijnor', 'Bikaner', 'Bilaspur', 'Bilaspur', 'Birbhum', 'Bishnupur', 'Bokaro', 'Bongaigaon', 'Boudh', '(Bauda)', 'Budaun', 'Bulandshahr', 'Buldhana', 'Bundi', 'Burhanpur', 'Buxar', 'Cachar', 'Central', 'Delhi', 'Chamarajnagar', 'Chamba', 'Chamoli', 'Champawat', 'Champhai', 'Chandauli', 'Chandel', 'Chandigarh', 'Chandrapur', 'Changlang', 'Chatra', 'Chennai', 'Chhatarpur', 'Chhatrapati', 'Shahuji', 'Maharaj', 'Nagar', 'Chhindwara', 'Chikkaballapur', 'Chikkamagaluru', 'Chirang', 'Chitradurga', 'Chitrakoot', 'Chittoor', 'Chittorgarh', 'Churachandpur', 'Churu', 'Coimbatore', 'Cooch', 'Behar', 'Cuddalore', 'Cuttack', 'Dadra', 'and', 'Nagar', 'Haveli', 'Dahod', 'Dakshin', 'Dinajpur', 'Dakshina', 'Kannada', 'Daman', 'Damoh', 'Dantewada', 'Darbhanga', 'Darjeeling', 'Darrang', 'Datia', 'Dausa', 'Davanagere', 'Debagarh', '(Deogarh)', 'Dehradun', 'Deoghar', 'Deoria', 'Dewas', 'Dhalai', 'Dhamtari', 'Dhanbad', 'Dhar', 'Dharmapuri', 'Dharwad', 'Dhemaji', 'Dhenkanal', 'Dholpur', 'Dhubri', 'Dhule', 'Dibang', 'Valley', 'Dibrugarh', 'Dima', 'Hasao', 'Dimapur', 'Dindigul', 'Dindori', 'Diu', 'Doda', 'Dumka', 'Dungapur', 'Durg', 'East Champaran', 'East Delhi', 'East Garo', 'Hills', 'East Khasi', 'Hills', 'East Siang', 'East Sikkim', 'East Singhbhum', 'Eluru', 'Ernakulam', 'Erode', 'Etah', 'Etawah', 'Faizabad', 'Faridabad', 'Faridkot', 'Farrukhabad', 'Fatehabad', 'Fatehgarh', 'Sahib', 'Fatehpur', 'Fazilka', 'Firozabad', 'Firozpur', 'Gadag', 'Gadchiroli', 'Gajapati', 'Ganderbal', 'Gandhinagar', 'Ganganagar', 'Ganjam', 'Garhwa', 'Gautam', 'Buddh', 'Nagar', 'Gaya', 'Ghaziabad', 'Ghazipur', 'Giridih', 'Goalpara', 'Godda', 'Golaghat', 'Gonda', 'Gondia', 'Gopalganj', 'Gorakhpur', 'Gulbarga', 'Gumla', 'Guna', 'Guntur', 'Gurdaspur', 'Gurgaon', 'Gwalior', 'Hailakandi', 'Hamirpur', 'Hamirpur', 'Hanumangarh', 'Harda', 'Hardoi', 'Haridwar', 'Hassan', 'Haveri district', 'Hazaribag', 'Hingoli', 'Hissar', 'Hooghly', 'Hoshangabad', 'Hoshiarpur', 'Howrah', 'Hyderabad', 'Hyderabad', 'Idukki', 'Imphal', 'East Imphal', 'West Indore', 'Jabalpur', 'Jagatsinghpur', 'Jaintia', 'Hills', 'Jaipur', 'Jaisalmer', 'Jajpur', 'Jalandhar', 'Jalaun', 'Jalgaon', 'Jalna', 'Jalore', 'Jalpaiguri', 'Jammu', 'Jamnagar', 'Jamtara', 'Jamui', 'Janjgir-Champa', 'Jashpur', 'Jaunpur district', 'Jehanabad', 'Jhabua', 'Jhajjar', 'Jhalawar', 'Jhansi', 'Jharsuguda', 'Jhunjhunu', 'Jind', 'Jodhpur', 'Jorhat', 'Junagadh', 'Jyotiba', 'Phule', 'Nagar', 'Kabirdham', '(formerly', 'Kawardha)', 'Kadapa', 'Kaimur', 'Kaithal', 'Kakinada', 'Kalahandi', 'Kamrup', 'Kamrup', 'Metropolitan', 'Kanchipuram', 'Kandhamal', 'Kangra', 'Kanker', 'Kannauj', 'Kannur', 'Kanpur', 'Kanshi', 'Ram', 'Nagar', 'Kanyakumari', 'Kapurthala', 'Karaikal', 'Karauli', 'Karbi', 'Anglong', 'Kargil', 'Karimganj', 'Karimnagar', 'Karnal', 'Karur', 'Kasaragod', 'Kathua', 'Katihar', 'Katni', 'Kaushambi', 'Kendrapara', 'Kendujhar', '(Keonjhar)', 'Khagaria', 'Khammam', 'Khandwa', '(East Nimar)', 'Khargone', '(West Nimar)', 'Kheda', 'Khordha', 'Khowai', 'Khunti', 'Kinnaur', 'Kishanganj', 'Kishtwar', 'Kodagu', 'Koderma', 'Kohima', 'Kokrajhar', 'Kolar', 'Kolasib', 'Kolhapur', 'Kolkata', 'Kollam', 'Koppal', 'Koraput', 'Korba', 'Koriya', 'Kota', 'Kottayam', 'Kozhikode', 'Krishna', 'Kulgam', 'Kullu', 'Kupwara', 'Kurnool', 'Kurukshetra', 'Kurung', 'Kumey', 'Kushinagar', 'Kutch', 'Lahaul', 'and', 'Spiti', 'Lakhimpur', 'Lakhimpur', 'Kheri', 'Lakhisarai', 'Lalitpur', 'Latehar', 'Latur', 'Lawngtlai', 'Leh', 'Lohardaga', 'Lohit', 'Lower', 'Dibang', 'Valley', 'Lower', 'Subansiri', 'Lucknow', 'Ludhiana', 'Lunglei', 'Madhepura', 'Madhubani', 'Madurai', 'Mahamaya', 'Nagar', 'Maharajganj', 'Mahasamund', 'Mahbubnagar', 'Mahe', 'Mahendragarh', 'Mahoba', 'Mainpuri', 'Malappuram', 'Maldah', 'Malkangiri', 'Mamit', 'Mandi', 'Mandla', 'Mandsaur', 'Mandya', 'Mansa', 'Marigaon', 'Mathura', 'Mau', 'Mayurbhanj', 'Medak', 'Meerut', 'Mehsana', 'Mewat', 'Mirzapur', 'Moga', 'Mokokchung', 'Mon', 'Moradabad', 'Morena', 'Mumbai', 'City', 'Mumbai', 'suburban', 'Munger', 'Murshidabad', 'Muzaffarnagar', 'Muzaffarpur', 'Mysore', 'Nabarangpur', 'Nadia', 'Nagaon', 'Nagapattinam', 'Nagaur', 'Nagpur', 'Nainital', 'Nalanda', 'Nalbari', 'Nalgonda', 'Namakkal', 'Nanded', 'Nandurbar', 'Narayanpur', 'Narmada', 'Narsinghpur', 'Nashik', 'Navsari', 'Nawada', 'Nawanshahr', 'Nayagarh', 'Neemuch', 'Nellore', 'New Delhi', 'Nilgiris', 'Nizamabad', 'North 24 Parganas', 'North Delhi', 'North East Delhi', 'North Goa', 'North Sikkim', 'North Tripura', 'North West Delhi', 'Nuapada', 'Ongole', 'Osmanabad', 'Pakur', 'Palakkad', 'Palamu', 'Pali', 'Palwal', 'Panchkula', 'Panchmahal', 'Panchsheel', 'Nagar district', '(Hapur)', 'Panipat', 'Panna', 'Papum', 'Pare', 'Parbhani', 'Paschim', 'Medinipur', 'Patan', 'Pathanamthitta', 'Pathankot', 'Patiala', 'Patna', 'Pauri', 'Garhwal', 'Perambalur', 'Phek', 'Pilibhit', 'Pithoragarh', 'Pondicherry', 'Poonch', 'Porbandar', 'Pratapgarh', 'Pratapgarh', 'Pudukkottai', 'Pulwama', 'Pune', 'Purba', 'Medinipur', 'Puri', 'Purnia', 'Purulia', 'Raebareli', 'Raichur', 'Raigad', 'Raigarh', 'Raipur', 'Raisen', 'Rajauri', 'Rajgarh', 'Rajkot', 'Rajnandgaon', 'Rajsamand', 'Ramabai', 'Nagar', '(Kanpur', 'Dehat)', 'Ramanagara', 'Ramanathapuram', 'Ramban', 'Ramgarh', 'Rampur', 'Ranchi', 'Ratlam', 'Ratnagiri', 'Rayagada', 'Reasi', 'Rewa', 'Rewari', 'Ri', 'Bhoi', 'Rohtak', 'Rohtas', 'Rudraprayag', 'Rupnagar', 'Sabarkantha', 'Sagar', 'Saharanpur', 'Saharsa', 'Sahibganj', 'Saiha', 'Salem', 'Samastipur', 'Samba', 'Sambalpur', 'Sangli', 'Sangrur', 'Sant', 'Kabir', 'Nagar', 'Sant', 'Ravidas', 'Nagar', 'Saran', 'Satara', 'Satna', 'Sawai', 'Madhopur', 'Sehore', 'Senapati', 'Seoni', 'Seraikela', 'Kharsawan', 'Serchhip', 'Shahdol', 'Shahjahanpur', 'Shajapur', 'Shamli', 'Sheikhpura', 'Sheohar', 'Sheopur', 'Shimla', 'Shimoga', 'Shivpuri', 'Shopian', 'Shravasti', 'Sibsagar', 'Siddharthnagar', 'Sidhi', 'Sikar', 'Simdega', 'Sindhudurg', 'Singrauli', 'Sirmaur', 'Sirohi', 'Sirsa', 'Sitamarhi', 'Sitapur', 'Sivaganga', 'Siwan', 'Solan', 'Solapur', 'Sonbhadra', 'Sonipat', 'Sonitpur', 'South 24 Parganas', 'South Delhi', 'South Garo', 'Hills', 'South Goa', 'South Sikkim', 'South Tripura', 'South West Delhi', 'Sri', 'Muktsar', 'Sahib', 'Srikakulam', 'Srinagar', 'Subarnapur', '(Sonepur)', 'Sultanpur', 'Sundergarh', 'Supaul', 'Surat', 'Surendranagar', 'Surguja', 'Tamenglong', 'Tarn', 'Taran', 'Tawang', 'Tehri', 'Garhwal', 'Thane', 'Thanjavur', 'The', 'Dangs', 'Theni', 'Thiruvananthapuram', 'Thoothukudi', 'Thoubal', 'Thrissur', 'Tikamgarh', 'Tinsukia', 'Tirap', 'Tiruchirappalli', 'Tirunelveli', 'Tirupur', 'Tiruvallur', 'Tiruvannamalai', 'Tiruvarur', 'Tonk', 'Tuensang', 'Tumkur', 'Udaipur', 'Udalguri', 'Udham', 'Singh', 'Nagar', 'Udhampur', 'Udupi', 'Ujjain', 'Ukhrul', 'Umaria', 'Una', 'Unnao', 'Upper', 'Siang', 'Upper', 'Subansiri', 'Uttar', 'Dinajpur', 'Uttara', 'Kannada', 'Uttarkashi', 'Vadodara', 'Vaishali', 'Valsad', 'Varanasi', 'Vellore', 'Vidisha', 'Viluppuram', 'Virudhunagar', 'Visakhapatnam', 'Vizianagaram', 'Vyara', 'Warangal', 'Wardha', 'Washim', 'Wayanad', 'West Champaran', 'West Delhi', 'West Garo', 'Hills', 'West Kameng', 'West Khasi', 'Hills', 'West Siang', 'West Sikkim', 'West Singhbhum', 'West Tripura', 'Wokha', 'Yadgir', 'Yamuna', 'Nagar', 'Yanam', 'Yavatmal', 'Zunheboto'];
 create_options(cities);
-
-
-
-
 
 </script>
 </body>
