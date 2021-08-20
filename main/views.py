@@ -1,7 +1,22 @@
 import os
 import json
 import urllib.request
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+import django
+import requests
+
+HEADERS = {
+        'dnt': '1',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'referer': 'https://www.carwale.com/',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    }
 
 
 def weather_icons(weather):
@@ -14,9 +29,16 @@ def weather_icons(weather):
     return selector.get(weather.lower(), "fas fa-sun")
 
 
+def get_cities(request, search_city):
+    data = "[]"
+    if request.method == 'GET' and search_city not in ["null", None]:
+        data = (requests.get(f"https://www.carwale.com/api/v2/autocomplete/city/?term={search_city}", headers=HEADERS).text)
+    return HttpResponse(data)
+
+
 def index(request):
     if request.method == 'POST':
-        city = request.POST['city']
+        city = request.POST['city'].replace(" ", "")
         # source contain JSON data from API
 
         try:
