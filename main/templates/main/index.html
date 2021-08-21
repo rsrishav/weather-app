@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
             integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
             crossorigin="anonymous"></script>
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -117,7 +116,7 @@
             <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">
                 {% csrf_token %}
                 <input class="form-control form-control-dark" id="myInput" name="city"
-                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()" required>
+                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()" onblur="get_cities()" required>
             </form>
             <div class="text-end">
                 <datalist id="datalistOptions" onchange="this.form.submit()">
