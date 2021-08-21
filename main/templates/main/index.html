@@ -94,7 +94,7 @@
         position: fixed;
         bottom: 0;
         right: 0;
-        width: 13%;
+<!--        width: 13%;-->
     }
 
     .page-footer span {
@@ -110,14 +110,14 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <h4 style="font-family: system-ui;">Weather Data</h4>
+                <h4 style="font-family: system-ui;font-size: 150%;">Weather Data</h4>
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             </ul>
             <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">
                 {% csrf_token %}
                 <input class="form-control form-control-dark" id="myInput" name="city"
-                       placeholder="City name" list="datalistOptions" oninput="get_citiess()" required>
+                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()" required>
             </form>
             <div class="text-end">
                 <datalist id="datalistOptions" onchange="this.form.submit()">
@@ -157,7 +157,7 @@
   </div>
 </footer>
 <script>
-function get_citiess() {
+function get_cities() {
     search_city_name = document.getElementById("myInput").value;
     search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;
     var url = "/city/"+search_city;
