@@ -153,7 +153,7 @@
     <small>Made with <span>❤</span> by <a href="#">Rishav</a></small>
 </footer>
 <script>
-function get_cities() {
+$('#myInput').bind('input change blur',function(){
     search_city_name = document.getElementById("myInput").value;
     search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;
     var url = "/city/"+search_city;
@@ -161,12 +161,25 @@ function get_cities() {
     dropdown.empty();
     $.getJSON(url, function (data) {
         $.each(data, function (index, value) {
-            // APPEND OR INSERT DATA TO SELECT ELEMENT.
-                    $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');
+            $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');
             console.log(value);
         });
     });
-}
+});
+<!--function get_cities() {-->
+<!--    search_city_name = document.getElementById("myInput").value;-->
+<!--    search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;-->
+<!--    var url = "/city/"+search_city;-->
+<!--    let dropdown = $('#datalistOptions');-->
+<!--    dropdown.empty();-->
+<!--    $.getJSON(url, function (data) {-->
+<!--        $.each(data, function (index, value) {-->
+<!--            // APPEND OR INSERT DATA TO SELECT ELEMENT.-->
+<!--                    $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');-->
+<!--            console.log(value);-->
+<!--        });-->
+<!--    });-->
+<!--}-->
 </script>
 </body>
 </html>
