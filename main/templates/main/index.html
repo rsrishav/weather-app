@@ -130,55 +130,48 @@ input[type=submit] {
     No data found !!!
 </div>
 {% endif %}
-<script>
+<!--<script>-->
 
-function get_citiess() {
-    search_city_name = document.getElementById("myInput").value;
-    search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;
-    var url = "/city/"+search_city;
-    let dropdown = $('#datalistOptions');
-    dropdown.empty();
-    $.getJSON(url, function (data) {
-        $.each(data, function (index, value) {
-            // APPEND OR INSERT DATA TO SELECT ELEMENT.
-<!--            datalist = document.getElementById("datalistOptions");-->
-<!--            op = document.createElement("option");-->
-<!--            op.value = value.payload.displayName;-->
-<!--            datalist.appendChild(op);-->
-                    $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');
-            console.log(value);
-        });
-    });
-}
-<!--    $(document).ready(function () {-->
-<!--        $('#myInput').change(function () {-->
-<!--            var url = "/city/"+document.getElementById("myInput").value;-->
-<!--            let dropdown = $('#datalistOptions')-->
-<!--            dropdown.empty();-->
-<!--            $.getJSON(url, function (data) {-->
-<!--                $.each(data, function (index, value) {-->
-<!--                    // APPEND OR INSERT DATA TO SELECT ELEMENT.-->
-<!--                    datalist = document.getElementById("datalistOptions")-->
-<!--                    op = document.createElement("option");-->
-<!--                    op.value = value.payload.displayName;-->
-<!--                    datalist.appendChild(op);-->
-<!--&lt;!&ndash;                    $('#datalistOptions').append('<option value="' + value.cityName + '">' + value.displayName + '</option>');&ndash;&gt;-->
-<!--                    console.log(value);-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-
-<!--    });-->
-
-</script>
-<script>
-<!--function get_cities() {-->
-<!--    let dropdown = document.getElementById('datalistOptions');-->
-<!--    let search_city = document.getElementById('myInput').value;-->
-
+<!--function get_citiess() {-->
+<!--    search_city_name = document.getElementById("myInput").value;-->
+<!--    search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;-->
+<!--    var url = "/city/"+search_city;-->
+<!--    let dropdown = $('#datalistOptions');-->
 <!--    dropdown.empty();-->
-<!--    const url = '/';-->
+<!--    $.getJSON(url, function (data) {-->
+<!--        $.each(data, function (index, value) {-->
+<!--            // APPEND OR INSERT DATA TO SELECT ELEMENT.-->
+<!--&lt;!&ndash;            datalist = document.getElementById("datalistOptions");&ndash;&gt;-->
+<!--&lt;!&ndash;            op = document.createElement("option");&ndash;&gt;-->
+<!--&lt;!&ndash;            op.value = value.payload.displayName;&ndash;&gt;-->
+<!--&lt;!&ndash;            datalist.appendChild(op);&ndash;&gt;-->
+<!--                    $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');-->
+<!--            console.log(value);-->
+<!--        });-->
+<!--    });-->
 <!--}-->
+<!--&lt;!&ndash;    $(document).ready(function () {&ndash;&gt;-->
+<!--&lt;!&ndash;        $('#myInput').change(function () {&ndash;&gt;-->
+<!--&lt;!&ndash;            var url = "/city/"+document.getElementById("myInput").value;&ndash;&gt;-->
+<!--&lt;!&ndash;            let dropdown = $('#datalistOptions')&ndash;&gt;-->
+<!--&lt;!&ndash;            dropdown.empty();&ndash;&gt;-->
+<!--&lt;!&ndash;            $.getJSON(url, function (data) {&ndash;&gt;-->
+<!--&lt;!&ndash;                $.each(data, function (index, value) {&ndash;&gt;-->
+<!--&lt;!&ndash;                    // APPEND OR INSERT DATA TO SELECT ELEMENT.&ndash;&gt;-->
+<!--&lt;!&ndash;                    datalist = document.getElementById("datalistOptions")&ndash;&gt;-->
+<!--&lt;!&ndash;                    op = document.createElement("option");&ndash;&gt;-->
+<!--&lt;!&ndash;                    op.value = value.payload.displayName;&ndash;&gt;-->
+<!--&lt;!&ndash;                    datalist.appendChild(op);&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    $('#datalistOptions').append('<option value="' + value.cityName + '">' + value.displayName + '</option>');&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    console.log(value);&ndash;&gt;-->
+<!--&lt;!&ndash;                });&ndash;&gt;-->
+<!--&lt;!&ndash;            });&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+
+<!--</script>-->
+<script>
 
 function create_options(arr) {
     datalist = document.getElementById("datalistOptions")
