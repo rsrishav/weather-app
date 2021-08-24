@@ -130,5 +130,18 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# SETTINGS_DIR = os.path.dirname(__file__)
+# PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+# PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+# STATIC_PATH = os.path.join(BASE_DIR,'media')
+#
+# STATICFILES_DIRS = (
+#     STATIC_PATH,
+# )

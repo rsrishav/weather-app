@@ -100,11 +100,14 @@
         color: var(--red);
     }
 
+    .page-footer small {
+        color: white;
+    }
 
     </style>
 </head>
 
-<body>
+<body style="background-color: #4b515d;">
 <header class="p-3 bg-dark text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -116,7 +119,8 @@
             <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">
                 {% csrf_token %}
                 <input class="form-control form-control-dark" id="myInput" name="city"
-                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()" onblur="get_cities()" required>
+                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()"
+                       onblur="get_cities()" required>
             </form>
             <div class="text-end">
                 <datalist id="datalistOptions" onchange="this.form.submit()">
@@ -126,31 +130,74 @@
         </div>
     </div>
 </header>
-{% if country_code and coordinate and temp and pressure and humidity %}
-<div class="card" style="width: 18rem; margin: 2%;">
-    <!--    <img src="..." class="" alt="...">-->
-    <div class="card-body">
+<!--{% if country_code and coordinate and temp and pressure and humidity %}-->
+<!--<div class="card" style="width: 18rem; margin: 2%;">-->
+<!--    &lt;!&ndash;    <img src="..." class="" alt="...">&ndash;&gt;-->
+<!--    <div class="card-body">-->
 
-        <h4 class="card-title">{{city_name}}<span>({{country_code}})</span> <i class="{{weather_icon}}"
-                                                                               style="font-size: xx-large;"></i></h4>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Temperature : <strong>{{temp}}</strong></li>
-            <li class="list-group-item">Feels like : <strong>{{feels_like}}</strong></li>
-            <li class="list-group-item">Humidity : <strong>{{humidity}}</strong></li>
-            <li class="list-group-item">Weather : <strong>{{weather_condition}}</strong></li>
-        </ul>
+<!--        <h4 class="card-title">{{city_name}}<span>({{country_code}})</span> <i class="{{weather_icon}}"-->
+<!--                                                                               style="font-size: xx-large;"></i></h4>-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--            <li class="list-group-item">Temperature : <strong>{{temp}}</strong></li>-->
+<!--            <li class="list-group-item">Feels like : <strong>{{feels_like}}</strong></li>-->
+<!--            <li class="list-group-item">Humidity : <strong>{{humidity}}%</strong></li>-->
+<!--            <li class="list-group-item">Weather : <strong>{{weather_condition}}</strong></li>-->
+<!--        </ul>-->
 
+
+<!--    </div>-->
+<!--</div>-->
+<!--{% elif data_status == "not_found" %}-->
+<!--<div class="col-md-4 col-md-offset-4">-->
+<!--    No data found !!!-->
+<!--</div>-->
+<!--{% endif %}-->
+
+<section>
+    <div class="container py-5 h-100">
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                {% if country_code and coordinate and temp and pressure and humidity %}
+                <div class="card" style="color: #4B515D; border-radius: 35px;">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex">
+                            <h6 class="flex-grow-1">{{city_name}}<span>({{country_code}})</span></h6>
+                            <h6>{{time}}</h6>
+                        </div>
+
+                        <div class="d-flex flex-column text-center mt-5 mb-4">
+                            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}} </h6>
+                            <span class="small" style="color: #868B94">{{weather_condition}}</span>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1" style="font-size: 1rem;">
+                                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h </span></div>
+                                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humidity}}% </span></div>
+                            </div>
+                            <div>
+                                <img src="/static/haze.png" width="100px">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% elif data_status == "not_found" %}
+                <div class="col-md-4 col-md-offset-4">
+                    No data found !!!
+                </div>
+                {% endif %}
+            </div>
+        </div>
 
     </div>
-</div>
-{% elif data_status == "not_found" %}
-<div class="col-md-4 col-md-offset-4">
-    No data found !!!
-</div>
-{% endif %}
+</section>
+
 <footer class="page-footer">
-<!--    <small>Made with <span>❤</span> by <a href="https://github.com/rsrishav" target="_blank">Rishav</a>-->
-    <small>Made with <span>❤</span> by <a href="#">Rishav</a></small>
+    <!--    <small>Made with <span>❤</span> by <a href="https://github.com/rsrishav" target="_blank">Rishav</a>-->
+    <small>Made with <span>❤</span> by Rishav</small>
 </footer>
 <script>
 $('#myInput').bind('input change blur',function(){
@@ -180,6 +227,7 @@ $('#myInput').bind('input change blur',function(){
 <!--        });-->
 <!--    });-->
 <!--}-->
+
 </script>
 </body>
 </html>

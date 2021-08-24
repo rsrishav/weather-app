@@ -1,3 +1,4 @@
+import time
 import os
 import json
 import urllib.request
@@ -20,6 +21,10 @@ HEADERS = {
 NO_OF_RECORDS = 5
 
 
+def get_time(epoch_time):
+    return time.strftime('%H:%M', time.localtime(epoch_time))
+
+
 def weather_icons(weather):
     selector = {
         "haze": "fas fa-smog",
@@ -29,6 +34,16 @@ def weather_icons(weather):
     }
     return selector.get(weather.lower(), "fas fa-sun")
 # https://www.carwale.com/api/v2/autocomplete/city/?term=a
+
+
+def weather_img(weather):
+    selector = {
+        "haze": "haze",
+        "clouds": "clouds",
+        "rain": "rain",
+        "sun": "sun"
+    }
+    return selector.get(weather.lower(), "fas fa-sun")
 
 
 def get_cities(request, search_city):
@@ -62,10 +77,13 @@ def index(request):
                 "temp_max": f"{round(float(list_of_data['main']['temp_max'])-273.15, 1)}\u00B0C",
                 "temp_min": f"{round(float(list_of_data['main']['temp_min'])-273.15, 1)}\u00B0C",
                 "pressure": (list_of_data['main']['pressure']),
-                "humidity": f"{list_of_data['main']['humidity']}%",
+                "humidity": f"{list_of_data['main']['humidity']}",
                 "weather_condition": list_of_data['weather'][0]['main'],
                 "weather_condition_des": list_of_data['weather'][0]['description'],
-                "weather_icon": weather_icons(list_of_data["weather"][0]["main"])
+                "wind": list_of_data['wind']['speed'],
+                "weather_icon": weather_icons(list_of_data["weather"][0]["main"]),
+                "weather_img": weather_img(list_of_data["weather"][0]["main"]),
+                "time": get_time(list_of_data["dt"])
             }
 
             print(data)
