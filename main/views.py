@@ -18,11 +18,11 @@ HEADERS = {
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
     }
 
-NO_OF_RECORDS = 5
+NO_OF_RECORDS = 10
 
 
 def get_time(epoch_time):
-    return time.strftime('%H:%M', time.localtime(epoch_time))
+    return time.strftime('%H:%M', time.localtime(time.time()))
 
 
 def weather_icons(weather):

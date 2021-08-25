@@ -119,8 +119,7 @@
             <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">
                 {% csrf_token %}
                 <input class="form-control form-control-dark" id="myInput" name="city"
-                       placeholder="City name" list="datalistOptions" oninput="get_cities()" onchange="get_cities()"
-                       onblur="get_cities()" required>
+                       placeholder="City name" list="datalistOptions" required>
             </form>
             <div class="text-end">
                 <datalist id="datalistOptions" onchange="this.form.submit()">
@@ -130,28 +129,6 @@
         </div>
     </div>
 </header>
-<!--{% if country_code and coordinate and temp and pressure and humidity %}-->
-<!--<div class="card" style="width: 18rem; margin: 2%;">-->
-<!--    &lt;!&ndash;    <img src="..." class="" alt="...">&ndash;&gt;-->
-<!--    <div class="card-body">-->
-
-<!--        <h4 class="card-title">{{city_name}}<span>({{country_code}})</span> <i class="{{weather_icon}}"-->
-<!--                                                                               style="font-size: xx-large;"></i></h4>-->
-<!--        <ul class="list-group list-group-flush">-->
-<!--            <li class="list-group-item">Temperature : <strong>{{temp}}</strong></li>-->
-<!--            <li class="list-group-item">Feels like : <strong>{{feels_like}}</strong></li>-->
-<!--            <li class="list-group-item">Humidity : <strong>{{humidity}}%</strong></li>-->
-<!--            <li class="list-group-item">Weather : <strong>{{weather_condition}}</strong></li>-->
-<!--        </ul>-->
-
-
-<!--    </div>-->
-<!--</div>-->
-<!--{% elif data_status == "not_found" %}-->
-<!--<div class="col-md-4 col-md-offset-4">-->
-<!--    No data found !!!-->
-<!--</div>-->
-<!--{% endif %}-->
 
 <section>
     <div class="container py-5 h-100">
@@ -201,32 +178,29 @@
 </footer>
 <script>
 $('#myInput').bind('input change blur',function(){
-    search_city_name = document.getElementById("myInput").value;
-    search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;
-    var url = "/city/"+search_city;
     let dropdown = $('#datalistOptions');
-    dropdown.empty();
-    $.getJSON(url, function (data) {
-        $.each(data, function (index, value) {
-            $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');
-            console.log(value);
+    search_city_name = document.getElementById("myInput").value;
+    if(search_city_name==""){
+        dropdown.empty();
+    }
+    else {
+        search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;
+        var url = "/city/"+search_city;
+<!--        dropdown.empty();-->
+        var flag = true;
+        $.getJSON(url, function (data) {
+            $.each(data, function (index, value) {
+                if(flag==true) {
+                    flag=false;
+                    dropdown.empty();
+                }
+                $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');
+                console.log(value);
+            });
         });
-    });
+    }
 });
-<!--function get_cities() {-->
-<!--    search_city_name = document.getElementById("myInput").value;-->
-<!--    search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;-->
-<!--    var url = "/city/"+search_city;-->
-<!--    let dropdown = $('#datalistOptions');-->
-<!--    dropdown.empty();-->
-<!--    $.getJSON(url, function (data) {-->
-<!--        $.each(data, function (index, value) {-->
-<!--            // APPEND OR INSERT DATA TO SELECT ELEMENT.-->
-<!--                    $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');-->
-<!--            console.log(value);-->
-<!--        });-->
-<!--    });-->
-<!--}-->
+
 
 </script>
 </body>
