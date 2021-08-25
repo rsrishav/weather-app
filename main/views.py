@@ -22,7 +22,8 @@ NO_OF_RECORDS = 10
 
 
 def get_time(epoch_time):
-    return time.strftime('%H:%M', time.localtime(time.time()))
+    # return time.strftime('%H:%M', time.localtime(time.time()))
+    return time.strftime('%H:%M', time.localtime(epoch_time))
 
 
 def weather_icons(weather):
