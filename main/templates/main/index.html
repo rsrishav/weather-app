@@ -1,88 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Weather Django App</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-            integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Weather App(Django)</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/grid/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<!--    <script rel="stylesheet" src="style1.css"></script>-->
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/grid/grid.css"/>-->
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <style>
 
     .container {
         max-width: 100%;
     }
 
-<!--    .autocomplete {-->
-<!--        position: relative;-->
-<!--        display: inline-block;-->
-<!--    }-->
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
 
     span {
         font-size: small;
     }
 
-
-<!--    input {-->
-<!--        border: 1px solid transparent;-->
-<!--        background-color: #f1f1f1;-->
-<!--        padding: 10px;-->
-<!--        font-size: 16px;-->
-<!--    }-->
-
-<!--    input[type=text] {-->
-<!--        background-color: #f1f1f1;-->
-<!--        width: 100%;-->
-<!--    }-->
-
-<!--    input[type=submit] {-->
-<!--        background-color: DodgerBlue;-->
-<!--        color: #fff;-->
-<!--        cursor: pointer;-->
-<!--    }-->
-
-<!--    .autocomplete-items {-->
-<!--        position: absolute;-->
-<!--        border: 1px solid #d4d4d4;-->
-<!--        border-bottom: none;-->
-<!--        border-top: none;-->
-<!--        z-index: 99;-->
-<!--        /*position the autocomplete items to be the same width as the container:*/-->
-<!--        top: 100%;-->
-<!--        left: 0;-->
-<!--        right: 0;-->
-<!--    }-->
-
-<!--    .autocomplete-items div {-->
-<!--        padding: 10px;-->
-<!--        cursor: pointer;-->
-<!--        background-color: #fff;-->
-<!--        border-bottom: 1px solid #d4d4d4;-->
-<!--    }-->
-
-<!--    /*when hovering an item:*/-->
-<!--    .autocomplete-items div:hover {-->
-<!--        background-color: #e9e9e9;-->
-<!--    }-->
-
-<!--    /*when navigating through the items using the arrow keys:*/-->
-<!--    .autocomplete-active {-->
-<!--        background-color: DodgerBlue !important;-->
-<!--        color: #ffffff;-->
-<!--    }-->
-
-    .row {
-        margin-right: 0px;
-        margin-left: 0px;
+    /* COL Remove padding
+    -------------------------------------------------- */
+    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+        padding-right: 0px;
+        padding-left: 0px;
     }
 
     /* FOOTER
@@ -104,27 +56,35 @@
         color: white;
     }
 
+
     </style>
 </head>
 
+<!--  <body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">-->
 <body style="background-color: #4b515d;">
 <header class="p-3 bg-dark text-white">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <h4 style="font-family: system-ui;font-size: 150%;">Weather Data</h4>
-            </a>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            </ul>
-            <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">
-                {% csrf_token %}
-                <input class="form-control form-control-dark" id="myInput" name="city"
-                       placeholder="City name" list="datalistOptions" required>
-            </form>
-            <div class="text-end">
-                <datalist id="datalistOptions" onchange="this.form.submit()">
-                </datalist>
-                <button class="btn btn-outline-light btn-dark" type="submit" form="form_id">Search</button>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-12 col-lg-2" style="text-align: center;">
+                <a href="/" class="text-white text-decoration-none">
+                    <h4 style="font-family: system-ui;font-size: 150%;">Weather Data</h4>
+                </a>
+            </div>
+            <div class="col-12 col-md-9 col-sm-12 col-lg-10">
+                <form id="form_id" class="col" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 offset-md-5 offset-lg-7 col-md-5 col-sm-10 col-lg-4">
+                            <input class="form-control form-control-dark" id="myInput" name="city" placeholder="City name" list="datalistOptions" required="">
+                        </div>
+                        <div class="col-12 col-md-2 col-sm-2 col-lg-1" style="text-align: center;">
+                            <datalist id="datalistOptions" onchange="this.form.submit()">
+                            </datalist>
+                            <button class="btn btn-outline-light btn-dark" type="submit" form="form_id">Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -132,7 +92,6 @@
 
 <section>
     <div class="container py-5 h-100">
-
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-8 col-lg-6 col-xl-4">
                 {% if country_code and coordinate and temp and pressure and humidity %}
@@ -151,8 +110,10 @@
 
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1" style="font-size: 1rem;">
-                                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h </span></div>
-                                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humidity}}% </span></div>
+                                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h </span>
+                                </div>
+                                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humidity}}% </span>
+                                </div>
                             </div>
                             <div>
                                 <img src="/static/{{weather_img}}.png" width="100px">
@@ -176,6 +137,8 @@
     <!--    <small>Made with <span>❤</span> by <a href="https://github.com/rsrishav" target="_blank">Rishav</a>-->
     <small>Made with <span>❤</span> by Rishav</small>
 </footer>
+
+
 <script>
 $('#myInput').bind('input change blur',function(){
     let dropdown = $('#datalistOptions');
@@ -200,8 +163,239 @@ $('#myInput').bind('input change blur',function(){
         });
     }
 });
-
-
 </script>
+
 </body>
 </html>
+
+<!--<html lang="en" dir="ltr">-->
+
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>Weather Django App</title>-->
+<!--    &lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css"/>-->
+<!--<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/grid/">-->
+<!--    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/grid/grid.css"/>-->
+
+<!--    &lt;!&ndash; jQuery library &ndash;&gt;-->
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"-->
+<!--            integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"-->
+<!--          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>-->
+<!--&lt;!&ndash;    <script rel="stylesheet" src="style1.css"></script>&ndash;&gt;-->
+<!--    <style>-->
+
+<!--    .container {-->
+<!--        max-width: 100%;-->
+<!--    }-->
+
+<!--&lt;!&ndash;    .autocomplete {&ndash;&gt;-->
+<!--&lt;!&ndash;        position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;        display: inline-block;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--    span {-->
+<!--        font-size: small;-->
+<!--    }-->
+
+
+<!--&lt;!&ndash;    input {&ndash;&gt;-->
+<!--&lt;!&ndash;        border: 1px solid transparent;&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: #f1f1f1;&ndash;&gt;-->
+<!--&lt;!&ndash;        padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;        font-size: 16px;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    input[type=text] {&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: #f1f1f1;&ndash;&gt;-->
+<!--&lt;!&ndash;        width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    input[type=submit] {&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: DodgerBlue;&ndash;&gt;-->
+<!--&lt;!&ndash;        color: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;        cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .autocomplete-items {&ndash;&gt;-->
+<!--&lt;!&ndash;        position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;        border: 1px solid #d4d4d4;&ndash;&gt;-->
+<!--&lt;!&ndash;        border-bottom: none;&ndash;&gt;-->
+<!--&lt;!&ndash;        border-top: none;&ndash;&gt;-->
+<!--&lt;!&ndash;        z-index: 99;&ndash;&gt;-->
+<!--&lt;!&ndash;        /*position the autocomplete items to be the same width as the container:*/&ndash;&gt;-->
+<!--&lt;!&ndash;        top: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;        left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;        right: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .autocomplete-items div {&ndash;&gt;-->
+<!--&lt;!&ndash;        padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;        cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;        border-bottom: 1px solid #d4d4d4;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    /*when hovering an item:*/&ndash;&gt;-->
+<!--&lt;!&ndash;    .autocomplete-items div:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: #e9e9e9;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    /*when navigating through the items using the arrow keys:*/&ndash;&gt;-->
+<!--&lt;!&ndash;    .autocomplete-active {&ndash;&gt;-->
+<!--&lt;!&ndash;        background-color: DodgerBlue !important;&ndash;&gt;-->
+<!--&lt;!&ndash;        color: #ffffff;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--    .row {-->
+<!--        margin-right: 0px;-->
+<!--        margin-left: 0px;-->
+<!--    }-->
+
+<!--    /* FOOTER-->
+<!--    –––––––––––––––––––––––––––––––––––––––––––––––––– */-->
+<!--    .page-footer {-->
+<!--        font-size: 1rem;-->
+<!--        color: var(&#45;&#45;text_light);-->
+<!--        position: fixed;-->
+<!--        bottom: 0;-->
+<!--        width: 100%;-->
+<!--        text-align: center;-->
+<!--    }-->
+
+<!--    .page-footer span {-->
+<!--        color: var(&#45;&#45;red);-->
+<!--    }-->
+
+<!--    .page-footer small {-->
+<!--        color: white;-->
+<!--    }-->
+
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body style="background-color:white;">-->
+
+<!--&lt;!&ndash;<body style="background-color: #4b515d;">&ndash;&gt;-->
+<!--&lt;!&ndash;<header class="p-3 bg-dark text-white">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4 style="font-family: system-ui;font-size: 150%;">Weather Data</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            <form id="form_id" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;                {% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="form-control form-control-dark" id="myInput" name="city"&ndash;&gt;-->
+<!--&lt;!&ndash;                       placeholder="City name" list="datalistOptions" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                <datalist id="datalistOptions" onchange="this.form.submit()">&ndash;&gt;-->
+<!--&lt;!&ndash;                </datalist>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="btn btn-outline-light btn-dark" type="submit" form="form_id">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <a href="/" class="text-white text-decoration-none col-sm-4">-->
+<!--                <h4 style="font-family: system-ui;font-size: 150%;">Weather Data</h4>-->
+<!--            </a>-->
+
+<!--            <form id="form_id" class="col-sm-12" method="post">-->
+<!--<div class="row">-->
+<!--    <div class="col-sm-10">-->
+<!--    <input class="form-control form-control-dark" id="myInput" name="city" placeholder="City name" list="datalistOptions" required=""><input type="hidden" name="csrfmiddlewaretoken" value="N73ALTgM73O2PsfLzzGeZifRqLwolycK3sfN5vc7X7TOeuBeGLp4Jub0qh3hwn8t">-->
+<!--    </div>  <div class="col-1">-->
+<!--                <datalist id="datalistOptions" onchange="this.form.submit()">-->
+<!--                </datalist>-->
+<!--                <button class="btn btn-outline-light btn-dark" type="submit" form="form_id">Search</button>-->
+<!--            </div>-->
+<!--            </div></form>-->
+
+<!--        </div>    </div>-->
+
+
+<!--&lt;!&ndash;</header>&ndash;&gt;-->
+
+<!--<section>-->
+<!--    <div class="container py-5 h-100">-->
+
+<!--        <div class="row d-flex justify-content-center align-items-center h-100">-->
+<!--            <div class="col-md-8 col-lg-6 col-xl-4">-->
+<!--                {% if country_code and coordinate and temp and pressure and humidity %}-->
+<!--                <div class="card" style="color: #4B515D; border-radius: 35px;">-->
+<!--                    <div class="card-body p-4">-->
+
+<!--                        <div class="d-flex">-->
+<!--                            <h6 class="flex-grow-1">{{city_name}}<span>({{country_code}})</span></h6>-->
+<!--                            <h6>{{time}}</h6>-->
+<!--                        </div>-->
+
+<!--                        <div class="d-flex flex-column text-center mt-5 mb-4">-->
+<!--                            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}} </h6>-->
+<!--                            <span class="small" style="color: #868B94">{{weather_condition}}</span>-->
+<!--                        </div>-->
+
+<!--                        <div class="d-flex align-items-center">-->
+<!--                            <div class="flex-grow-1" style="font-size: 1rem;">-->
+<!--                                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h </span></div>-->
+<!--                                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humidity}}% </span></div>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <img src="/static/{{weather_img}}.png" width="100px">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% elif data_status == "not_found" %}-->
+<!--                <div class="col-md-4 col-md-offset-4">-->
+<!--                    No data found !!!-->
+<!--                </div>-->
+<!--                {% endif %}-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</section>-->
+
+<!--<footer class="page-footer">-->
+<!--    &lt;!&ndash;    <small>Made with <span>❤</span> by <a href="https://github.com/rsrishav" target="_blank">Rishav</a>&ndash;&gt;-->
+<!--    <small>Made with <span>❤</span> by Rishav</small>-->
+<!--</footer>-->
+<!--<script>-->
+<!--$('#myInput').bind('input change blur',function(){-->
+<!--    let dropdown = $('#datalistOptions');-->
+<!--    search_city_name = document.getElementById("myInput").value;-->
+<!--    if(search_city_name==""){-->
+<!--        dropdown.empty();-->
+<!--    }-->
+<!--    else {-->
+<!--        search_city = (search_city_name == null || search_city_name == "") ? "null" : search_city_name;-->
+<!--        var url = "/city/"+search_city;-->
+<!--&lt;!&ndash;        dropdown.empty();&ndash;&gt;-->
+<!--        var flag = true;-->
+<!--        $.getJSON(url, function (data) {-->
+<!--            $.each(data, function (index, value) {-->
+<!--                if(flag==true) {-->
+<!--                    flag=false;-->
+<!--                    dropdown.empty();-->
+<!--                }-->
+<!--                $('#datalistOptions').append('<option value="' + value.payload.displayName + ', IN"></option>');-->
+<!--                console.log(value);-->
+<!--            });-->
+<!--        });-->
+<!--    }-->
+<!--});-->
+
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

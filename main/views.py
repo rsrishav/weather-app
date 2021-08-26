@@ -42,9 +42,10 @@ def weather_img(weather):
         "haze": "haze",
         "clouds": "clouds",
         "rain": "rain",
-        "sun": "sun"
+        "sun": "sun",
+        "clear": "sun"
     }
-    return selector.get(weather.lower(), "fas fa-sun")
+    return selector.get(weather.lower(), "sun")
 
 
 def get_cities(request, search_city):
