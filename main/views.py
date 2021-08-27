@@ -26,7 +26,7 @@ def get_time(time_zone_seconds):
     # return time.strftime('%H:%M', time.localtime(time.time()))
     utc_time = datetime.utcnow()
     current_time = utc_time + timedelta(0, time_zone_seconds)
-    return f"{current_time.time().hour}:{current_time.time().minute}"
+    return f"{('0'+str(current_time.time().hour))[-2:]}:{('0'+str(current_time.time().minute))[-2:]}"
 
 
 def weather_icons(weather):
